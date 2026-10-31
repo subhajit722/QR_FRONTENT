@@ -1,5 +1,10 @@
 
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+} from "react";
+
 import api from "../api/axios";
 
 const AuthContext = createContext(null);
@@ -17,12 +22,12 @@ export const AuthProvider = ({ children }) => {
     () => localStorage.getItem("adminToken") || null
   );
 
+  // RESTAURANT ADMIN LOGIN
   const login = async (username, password) => {
     const response = await api.post("/admin/login", {
       username,
       password,
     });
-    console.log("Login Response:", response); // Debugging line
 
     const data = response.data;
 
@@ -31,7 +36,10 @@ export const AuthProvider = ({ children }) => {
     }
 
     localStorage.setItem("adminToken", data.token);
-    localStorage.setItem("adminData", JSON.stringify(data.admin));
+    localStorage.setItem(
+      "adminData",
+      JSON.stringify(data.admin)
+    );
 
     setToken(data.token);
     setAdmin(data.admin);
@@ -39,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
+  // RESTAURANT ADMIN LOGOUT
   const logout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("adminData");
@@ -52,7 +61,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         admin,
         token,
-        isAuthenticated: Boolean(token),
+        isAuthenticated: Boolean(token && admin),
         login,
         logout,
       }}

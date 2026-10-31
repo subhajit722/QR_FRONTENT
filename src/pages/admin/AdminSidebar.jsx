@@ -1,7 +1,7 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-
+import { useRestaurant } from "../../context/RestaurantContext";
 import {
   DashboardRounded,
   RestaurantMenuRounded,
@@ -18,6 +18,7 @@ const AdminSidebar = () => {
   const navigate = useNavigate();
   const { admin, logout } = useAuth();
 
+  
   const menuItems = [
     {
       title: "Overview",
@@ -51,12 +52,24 @@ const AdminSidebar = () => {
     logout();
     navigate("/admin/login", { replace: true });
   };
+    const { restaurant, loadingRestaurant } = useRestaurant();
+console.log("Restaurant data in AdminSidebar:", restaurant);
+  if (loadingRestaurant) {
+    return <div>Loading restaurant...</div>;
+  }
 
   return (
-    <aside className="admin-sidebar">
+    <aside className="admin-sidebar" >
       <div className="sidebar-brand">
         <div className="sidebar-logo">
-          <RestaurantMenuRounded />
+        {restaurant?.logo ? (
+  <img
+    src={`${import.meta.env.VITE_IMG_URL}/${restaurant.logo}`}
+    alt="Restaurant Logo"
+  />
+) : (
+  <RestaurantMenuRounded />
+)}
         </div>
 
         <div>

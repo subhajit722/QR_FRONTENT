@@ -1,0 +1,105 @@
+.super-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #101828, #253858);
+  padding: 24px 0;
+}
+
+.super-login-card {
+  padding: 40px !important;
+  border-radius: 20px !important;
+  max-width: 460px;
+  margin: auto;
+}
+
+.super-login-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 18px;
+  background: #e8efff;
+  color: #315efb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 22px;
+}
+
+.super-login-icon svg {
+  font-size: 35px;
+}
+
+.super-dashboard {
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.super-appbar {
+  background: #17243b !important;
+}
+
+.super-stat-card,
+.super-table-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(20, 35, 60, 0.05) !important;
+}
+
+.super-loading {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.super-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+.super-table th {
+  text-align: left;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 15px;
+  background: #f8fafc;
+  white-space: nowrap;
+}
+
+.super-table td {
+  padding: 17px 15px;
+  border-bottom: 1px solid #edf0f5;
+  font-size: 14px;
+}
+
+.super-table td small {
+  display: block;
+  color: #98a2b3;
+  margin-top: 5px;
+}
+
+.super-status {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.super-status.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.super-status.inactive {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 600px) {
+  .super-login-card {
+    padding: 25px !important;
+  }
+}

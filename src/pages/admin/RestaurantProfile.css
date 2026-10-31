@@ -1,0 +1,499 @@
+
+.restaurant-profile-page {
+  padding: 28px;
+  color: #252525;
+}
+
+.restaurant-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.restaurant-profile-header h1 {
+  margin: 8px 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.restaurant-profile-header p {
+  margin: 0;
+  color: #777;
+  line-height: 1.6;
+}
+
+.profile-eyebrow {
+  color: #a66b2d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.profile-header-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  background: #fff0df;
+  color: #a66b2d;
+}
+
+.profile-header-icon svg {
+  font-size: 30px;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 24px;
+  align-items: start;
+}
+
+.profile-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.profile-card {
+  padding: 24px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.035);
+}
+
+.profile-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 24px;
+}
+
+.profile-card-heading > svg {
+  padding: 9px;
+  box-sizing: content-box;
+  border-radius: 12px;
+  background: #fff3e5;
+  color: #a66b2d;
+  font-size: 22px;
+}
+
+.profile-card-heading h2 {
+  margin: 0 0 5px;
+  font-size: 18px;
+}
+
+.profile-card-heading p {
+  margin: 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.profile-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.profile-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.profile-image-field {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 13px;
+}
+
+.profile-image-heading h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.profile-image-heading p {
+  min-height: 34px;
+  margin: 0 0 12px;
+  color: #888;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.profile-image-preview {
+  width: 100%;
+  height: 145px;
+  margin-bottom: 13px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px dashed #d8d8d8;
+  border-radius: 10px;
+  background: #fafafa;
+  color: #aaa;
+}
+
+.profile-image-preview.logo {
+  height: 145px;
+}
+
+.profile-image-preview.bannerImage {
+  height: 145px;
+}
+
+.profile-image-preview.offerBoxImage {
+  height: 145px;
+}
+
+.profile-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.profile-image-preview.bannerImage img,
+.profile-image-preview.offerBoxImage img {
+  object-fit: cover;
+}
+
+.profile-image-preview svg {
+  font-size: 38px;
+}
+
+.profile-image-hint {
+  display: block;
+  margin-top: 9px;
+  color: #999;
+  font-size: 11px;
+  text-align: center;
+}
+
+.profile-color-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.profile-color-field {
+  padding: 14px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.profile-color-field label {
+  display: block;
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-color-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-color-input input {
+  width: 45px;
+  height: 38px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.profile-color-input span {
+  color: #777;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.offer-box-live-preview {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.offer-box-live-preview img {
+  width: 85px;
+  height: 75px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.offer-box-live-preview span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.offer-box-live-preview p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.profile-save-area {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 25px;
+}
+
+.profile-preview-column {
+  min-width: 0;
+}
+
+.profile-preview-sticky {
+  position: sticky;
+  top: 25px;
+  padding: 18px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.035);
+}
+
+.profile-preview-title {
+  margin-bottom: 15px;
+}
+
+.profile-preview-title h2 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.profile-preview-title span {
+  color: #999;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.restaurant-live-preview {
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-radius: 13px;
+  background: #fafafa;
+}
+
+.preview-banner {
+  position: relative;
+  min-height: 195px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 18px;
+  background: var(--preview-primary);
+  color: #fff;
+  text-align: center;
+}
+
+.preview-banner > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.preview-banner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.preview-logo {
+  width: 55px;
+  height: 55px;
+  margin-bottom: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.preview-banner-content h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.preview-banner-content p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.preview-navigation {
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+  padding: 12px 5px;
+  background: var(--preview-nav);
+  color: var(--preview-primary);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.preview-content {
+  padding: 14px;
+}
+
+.preview-content h4 {
+  margin: 0 0 13px;
+  color: var(--preview-primary);
+  font-size: 15px;
+}
+
+.preview-product {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.preview-product-image {
+  width: 65px;
+  height: 65px;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 8px;
+  background: #f2f2f2;
+  color: #aaa;
+}
+
+.preview-product-image svg {
+  font-size: 26px;
+}
+
+.preview-product strong {
+  font-size: 12px;
+}
+
+.preview-product p {
+  margin: 5px 0;
+  color: #888;
+  font-size: 10px;
+}
+
+.preview-product span {
+  color: var(--preview-secondary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.preview-offer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.preview-offer img {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.preview-offer strong {
+  font-size: 12px;
+}
+
+.preview-offer p {
+  margin: 5px 0 0;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.preview-note {
+  margin: 13px 0 0;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.profile-loading {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #888;
+}
+
+@media (max-width: 1100px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-preview-column {
+    order: -1;
+  }
+
+  .profile-preview-sticky {
+    position: static;
+  }
+}
+
+@media (max-width: 650px) {
+  .restaurant-profile-page {
+    padding: 16px;
+  }
+
+  .restaurant-profile-header h1 {
+    font-size: 24px;
+  }
+
+  .profile-card {
+    padding: 17px;
+  }
+
+  .profile-form-grid,
+  .profile-image-grid,
+  .profile-color-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-save-area button {
+    width: 100%;
+  }
+}
+.profile-save-area {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .profile-save-area {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .profile-save-area button {
+    width: 100%;
+  }
+}

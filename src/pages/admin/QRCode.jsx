@@ -1,24 +1,62 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Alert,
   Button,
   CircularProgress,
 } from "@mui/material";
+
 import DownloadIcon from "@mui/icons-material/Download";
 import PrintIcon from "@mui/icons-material/Print";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
+
+import api from "../../api/axios";
 import "./QRCode.css";
 
 const QRCodePage = () => {
   const [qrImage, setQrImage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [profileLoading, setProfileLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Change this to your deployed website URL later.
-  const menuUrl = `${window.location.origin}/menu`;
+  const [restaurant, setRestaurant] = useState(null);
+
+  // Load logged-in restaurant details
+  useEffect(() => {
+    fetchRestaurant();
+  }, []);
+
+  const fetchRestaurant = async () => {
+    try {
+      setProfileLoading(true);
+      setError("");
+
+      const response = await api.get("/admin/profile");
+
+      setRestaurant(response.data.restaurant);
+    } catch (err) {
+      console.error("Restaurant profile error:", err);
+
+      setError(
+        err.response?.data?.message ||
+        "Unable to load restaurant details."
+      );
+    } finally {
+      setProfileLoading(false);
+    }
+  };
+
+  // Restaurant-specific public menu URL
+  const menuUrl = restaurant?.slug
+    ? `${window.location.origin}/menu/${restaurant.slug}`
+    : "";
 
   const generateQR = async () => {
+    if (!menuUrl) {
+      setError("Restaurant menu URL is not available.");
+      return;
+    }
+
     try {
       setLoading(true);
       setError("");
@@ -49,7 +87,7 @@ const QRCodePage = () => {
 
     const link = document.createElement("a");
     link.href = qrImage;
-    link.download = "restaurant-menu-qr.png";
+    link.download = `${restaurant?.slug || "restaurant"}-menu-qr.png`;
     link.click();
   };
 
@@ -63,11 +101,14 @@ const QRCodePage = () => {
       return;
     }
 
+    const safeName = (restaurant?.name || "Our Restaurant")
+      .replace(/[&<>"']/g, "");
+
     printWindow.document.write(`
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Restaurant Menu QR</title>
+          <title>${safeName} - Menu QR</title>
           <style>
             body {
               font-family: Arial, sans-serif;
@@ -79,7 +120,7 @@ const QRCodePage = () => {
             }
             .card { padding: 35px; }
             h1 { font-size: 28px; }
-            p { color: #666; }
+            p { color: #666; overflow-wrap: anywhere; }
             img { width: 300px; height: 300px; }
             @media print {
               body { min-height: auto; }
@@ -88,8 +129,8 @@ const QRCodePage = () => {
         </head>
         <body>
           <div class="card">
-            <h1>Our Menu</h1>
-            <p>Scan to explore our delicious food</p>
+            <h1>${safeName}</h1>
+            <p>Scan to explore our menu</p>
             <img src="${qrImage}" alt="Restaurant menu QR code" />
             <p>${menuUrl}</p>
           </div>
@@ -104,6 +145,15 @@ const QRCodePage = () => {
 
     printWindow.document.close();
   };
+
+  if (profileLoading) {
+    return (
+      <div className="qr-loading">
+        <CircularProgress />
+        <p>Loading restaurant details...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="qr-page">
@@ -121,11 +171,17 @@ const QRCodePage = () => {
 
       <div className="qr-content">
         <div className="qr-info">
-          <h2>Your Digital Menu</h2>
+          <h2>{restaurant?.name || "Your Digital Menu"}</h2>
+
           <p>
             Customers can scan this QR code with their phone camera
             to view your restaurant menu instantly.
           </p>
+
+          <div className="qr-url-box">
+            <span>RESTAURANT SLUG</span>
+            <strong>{restaurant?.slug || "Not available"}</strong>
+          </div>
 
           <div className="qr-url-box">
             <span>MENU URL</span>
@@ -135,17 +191,17 @@ const QRCodePage = () => {
           <div className="qr-instructions">
             <h3>How it works</h3>
             <ol>
-              <li>Generate your QR code.</li>
+              <li>Generate your restaurant QR code.</li>
               <li>Download or print it.</li>
               <li>Place it on restaurant tables.</li>
-              <li>Customers scan and view your menu.</li>
+              <li>Customers scan and view your menu and offers.</li>
             </ol>
           </div>
 
           <Button
             variant="contained"
             onClick={generateQR}
-            disabled={loading}
+            disabled={loading || !restaurant?.slug}
             className="qr-generate-button"
             startIcon={
               loading ? (
@@ -182,7 +238,7 @@ const QRCodePage = () => {
               </div>
             )}
 
-            <h3>Explore Our Menu</h3>
+            <h3>{restaurant?.name || "Explore Our Menu"}</h3>
             <p>Fresh food. Great taste. Beautiful moments.</p>
           </div>
 

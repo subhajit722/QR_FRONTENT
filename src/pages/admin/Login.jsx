@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRestaurant } from "../../context/RestaurantContext";
 import {
   Alert,
   CircularProgress,
@@ -33,6 +34,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { loadRestaurant } = useRestaurant();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -55,7 +57,9 @@ const Login = () => {
     try {
       setLoading(true);
 
-      await login(formData.username.trim(), formData.password);
+   const response =   await login(formData.username.trim(), formData.password);
+
+      await loadRestaurant();
 
       navigate("/admin/dashboard", { replace: true });
     } catch (err) {
