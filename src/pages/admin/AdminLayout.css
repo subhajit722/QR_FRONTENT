@@ -1,0 +1,48 @@
+
+.admin-layout {
+  min-height: 100vh;
+  background: #f7f5f1;
+}
+
+.admin-main {
+  min-height: 100vh;
+  margin-left: 255px;
+  padding: 35px;
+}
+
+@media (max-width: 800px) {
+  .admin-sidebar {
+    width: 70px;
+    min-width: 70px;
+    padding: 20px 10px;
+  }
+
+  .sidebar-brand {
+    justify-content: center;
+    padding: 5px 0 35px;
+  }
+
+  .sidebar-brand > div:last-child,
+  .sidebar-section-label,
+  .sidebar-link span,
+  .sidebar-user,
+  .sidebar-logout span,
+  .sidebar-version span {
+    display: none;
+  }
+
+  .sidebar-link,
+  .sidebar-logout {
+    justify-content: center;
+    padding: 13px 8px;
+  }
+
+  .sidebar-version {
+    justify-content: center;
+  }
+
+  .admin-main {
+    margin-left: 70px;
+    padding: 22px 16px;
+  }
+}
